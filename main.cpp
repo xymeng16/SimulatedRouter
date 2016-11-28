@@ -19,9 +19,9 @@ void RoutingTableInit()
 	RouterA.AddAdjacentRouter(B);
 	RouterA.AddAdjacentRouter(E);
 
-	RouterB.AddItem(*(new RoutingTableItem(A,7,A)));
+	RouterB.AddItem(*(new RoutingTableItem(A,3,A)));
 	RouterB.AddItem(*(new RoutingTableItem(B,0,B)));
-	RouterB.AddItem(*(new RoutingTableItem(C,1,C)));
+	RouterB.AddItem(*(new RoutingTableItem(C,INF,C)));
 	RouterB.AddItem(*(new RoutingTableItem(D,INF,D)));
 	RouterB.AddItem(*(new RoutingTableItem(E,8,E)));
 	RouterB.AddAdjacentRouter(A);
@@ -29,7 +29,7 @@ void RoutingTableInit()
 	RouterB.AddAdjacentRouter(E);
 
 	RouterC.AddItem(*(new RoutingTableItem(A,INF,A)));
-	RouterC.AddItem(*(new RoutingTableItem(B,1,B)));
+	RouterC.AddItem(*(new RoutingTableItem(B,INF,B)));
 	RouterC.AddItem(*(new RoutingTableItem(C,0,C)));
 	RouterC.AddItem(*(new RoutingTableItem(D,2,D)));
 	RouterC.AddItem(*(new RoutingTableItem(E,INF,E)));
@@ -98,9 +98,9 @@ int main()
 	// How to let other virtual routers know that the connection between B and C was broken?
 	//getchar();
 	RouterB.GetVectorByDst(C).SetDistance(INF);
-	//RouterB.GetVectorByDst(C).SetDestinationID(C);
+	RouterB.GetVectorByDst(C).SetNextHop(C);
 	RouterC.GetVectorByDst(B).SetDistance(INF);
-	//RouterC.GetVectorByDst(B).SetDestinationID(B);
+	RouterC.GetVectorByDst(B).SetNextHop(B);
 	outputAll();
 	getchar();
 	Update();
