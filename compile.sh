@@ -1,2 +1,1 @@
-g++ main.cpp Router.cpp RoutingTableItem.cpp -o routing -g
-
+g++ main.cpp Router.cpp RoutingTableItem.cpp -o routing
